@@ -27,7 +27,7 @@ public class Topico {
 	private Usuario autor;
 	@ManyToOne
 	private Curso curso;
-	@OneToMany(mappedBy="topico")//Para ele não achar que é um novo mapeamento, utilizando o mappedBy
+	@OneToMany(mappedBy = "topico") // Para ele não achar que é um novo mapeamento, utilizando o mappedBy
 	private List<Resposta> respostas = new ArrayList<>();
 
 	@Override
@@ -54,6 +54,21 @@ public class Topico {
 			return false;
 		return true;
 	}
+
+	public Topico() {
+
+	}
+	
+	
+	
+
+	public Topico(String titulo, String mensagem, Curso curso) {
+		super();
+		this.titulo = titulo;
+		this.mensagem = mensagem;
+		this.curso = curso;
+	}
+	
 
 	public Long getId() {
 		return id;
