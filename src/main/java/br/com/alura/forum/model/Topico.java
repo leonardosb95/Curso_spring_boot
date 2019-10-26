@@ -58,9 +58,6 @@ public class Topico {
 	public Topico() {
 
 	}
-	
-	
-	
 
 	public Topico(String titulo, String mensagem, Curso curso) {
 		super();
