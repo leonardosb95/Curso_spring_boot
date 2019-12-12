@@ -59,7 +59,7 @@ public class TopicosController {
 	
 	@PostMapping
 	@Transactional
-	@CacheEvict(value = "listaDeTopicos")//Limpa a memoria cache do listaDeTopicos
+	@CacheEvict(value = "listaDeTopicos", allEntries = true)//Limpa a memoria cache do listaDeTopicos
 	public ResponseEntity<TopicoDto> cadastrar(@RequestBody @Valid TopicoForm form, UriComponentsBuilder uriBuilder) {
 		Topico topico = form.converter(cursoRepository);
 		topicoRepository.save(topico);
@@ -69,7 +69,7 @@ public class TopicosController {
 	}
 	
 	@GetMapping("/{id}")
-	@CacheEvict(value = "listaDeTopicos")//Limpa a memoria cache do listaDeTopicos
+	@CacheEvict(value = "listaDeTopicos", allEntries = true)//Limpa a memoria cache do listaDeTopicos
 	public ResponseEntity<DetalhesDoTopicoDto> detalhar(@PathVariable Long id) {
 		Optional<Topico> topico = topicoRepository.findById(id);
 		if (topico.isPresent()) {
@@ -81,7 +81,7 @@ public class TopicosController {
 	
 	@PutMapping("/{id}")
 	@Transactional
-	@CacheEvict(value = "listaDeTopicos")//Limpa a memoria cache do listaDeTopicos
+	@CacheEvict(value = "listaDeTopicos", allEntries = true)//Limpa a memoria cache do listaDeTopicos
 	public ResponseEntity<TopicoDto> atualizar(@PathVariable Long id, @RequestBody @Valid AtualizacaoTopicoForm form) {
 		Optional<Topico> optional = topicoRepository.findById(id);
 		if (optional.isPresent()) {
@@ -94,7 +94,7 @@ public class TopicosController {
 	
 	@DeleteMapping("/{id}")
 	@Transactional
-	@CacheEvict(value = "listaDeTopicos")//Limpa a memoria cache do listaDeTopicos
+	@CacheEvict(value = "listaDeTopicos", allEntries = true)//Limpa a memoria cache do listaDeTopicos
 	public ResponseEntity<?> remover(@PathVariable Long id) {
 		Optional<Topico> optional = topicoRepository.findById(id);
 		if (optional.isPresent()) {
