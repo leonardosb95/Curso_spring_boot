@@ -17,18 +17,16 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Entity
 public class Usuario implements UserDetails {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String email;
 	private String senha;
 	
-	@ManyToMany(fetch=FetchType.EAGER)//Ja traz  lista de usuario e perfis juntos
-	private List<Perfil> perfis= new ArrayList<>();
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Perfil> perfis = new ArrayList<>();
 
 	@Override
 	public int hashCode() {
@@ -86,7 +84,6 @@ public class Usuario implements UserDetails {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
